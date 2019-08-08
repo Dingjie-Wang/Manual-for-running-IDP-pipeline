@@ -40,7 +40,7 @@ $ awk 'NR % 4 == 2' sr.fa | sort | gzip > sr.sorted.txt.gz <br>
 $ gunzip -c sr.sorted.txt.gz | tr NT TN | ropebwt2 -LR | tr NT TN | fmlrc-convert comp_msbwt.npy
 
 ## (3) Correcting long reads by running FMLRC <br>
-Once a short-read BWT is constructed, the execution of FMLRC is relatively simple:
+Once a short-read BWT is constructed, the execution of FMLRC is relatively simple: <br>
 $ ./fmlrc  comp_msbwt.npy lr.fa corrected_lr.fa
 
 
