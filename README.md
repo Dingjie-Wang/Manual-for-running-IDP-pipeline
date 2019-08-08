@@ -1,6 +1,5 @@
 # Manual for running IDP pipeline
 
-Manual for running IDP pipeline
 IDP is a gene Isoform Detection and Prediction tool from Second Generation Sequencing and PacBio Sequencing (also called Hybrid Sequencing) developed by Prof. Kin Fai Au. It offers very reliable gene isoform identification with high sensitivity. This a fork of the original IDP, the purpose is to better help people to run this software. The official distribution is available at: http://augroup.org/IDP/IDP
 
 This manual contains more than just IDP, it has whole IDP pipeline which includes four steps: (1) Correct errors in long reads using short reads; (2) Align the corrected long reads; (3) Align the short reads; (4) Running IDP software. 
@@ -11,7 +10,7 @@ $ cd IDP/example
 $ gunzip data/*.gz
 $ ls -lht data
 
-1. Correct errors in long reads using short reads
+# 1. Correct errors in long reads using short reads
 The first step is to perform error correction on long reads using long and short reads combined. We have included both ColoRMap, LoRDEC and LSC software that can accomplish this step. I recommend ColoRMap and LoRDEC for speed and comparable performance on larger datasets.
 (1) ColoRMap is available at:  https://github.com/sfu-compbio/colormap
 (2) LoRDEC is available at: http://www.atgc-montpellier.fr/lordec/
@@ -30,7 +29,7 @@ $ runCorr.sh lr.fa sr.fa output pre 4
 This runs shortest path correction algorithm for long reads stored in lr.fa by short reads stored in sr.fa using 4 threads. When this is done, the corrected long reads are stored in testCorr/pre_sp.fasta file. You need to rename pre_sp.fasta as corrected_lr.fasta.
 Note: If you have paired-end short reads, you need to get a single interleaved/interlaced read file using fastUtils program. Then you can improve the correction using One-End Anchors algorithm. Please see the webpage: https://github.com/sfu-compbio/colormap for the details.
 
-2. Align the corrected long reads
+# 2. Align the corrected long reads
 You could let IDP do this for you, but I caution against it. Its’ a slow process and the aligners can crash sometimes, so its’ better to just sort this out now and not deal with it in the IDP run. Here, we align the corrected long reads using GMAP software. 
  (1) Download GMAP software at:
  http://research-pub.gene.com/gmap/src/gmap-gsnap-2018-07-04.tar.gz
@@ -51,7 +50,7 @@ $ gmap_build -D ./ -d gmapindex ./chr20.fa
 $ # Align the corrected long reads
 $ gmap -D ./ -d gmapindex -t 2 -f 1 -n 1 corrected_lr.fasta > corrected_lr.psl
 
-3. Align the short reads
+# 3. Align the short reads
 I will use hisat2 to align reads but run SpliceMap is included if you want a more classic approach to the IDP pipeline. For speed and stability I recommend hisat2 but it will require an additional processing step on our part.
 (1) Download hisat2 software at:
 http://ccb.jhu.edu/software/hisat2/dl/hisat2-2.1.0-Linux_x86_64.zip
@@ -79,7 +78,7 @@ $ Rscript ./Au-public-master/iron/utilities/make_sam_splicemap_like.R sr_trim.sa
 $ # get SpliceMap format bed file
 $ ./Au-public-master/iron/utilities/sam_to_splicemap_junction_bed.py -o sr.splicemap-like.junctions.bed sr.sam chr20.fa
 
-4. Run IDP software
+# 4. Run IDP software
 The psl option is the most convenient way to run IDP since it allows you to do your own alignment ahead of time as we have done here. To make this easier the IDP/examples folder contains a configuration file that points to the folders we've generated in this example. On a normal run you will create your own configuration file to describe the run. Now to actually run IDP. This configuration file has been set to use the files created in this example. In this example we are using an RPKM absolute and fraction cutoff rather than an FDR. The FDR does not execute well in small datasets or non-model organisms.
 If you prepared related input files and created your own configuration file, you can run IDP by the following command:
 $ ./bin/runIDP.py run.cfg 0
