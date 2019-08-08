@@ -28,7 +28,7 @@ Then simply make the program and run it with the "-h" option to verify it instal
 $ ./fmlrc -h <br>
 
 ## (2) Building the short-read BWT
-Prior to running FMLRC, a BWT of the short-read sequencing data needs to be constructed. Currently, the implementation expects it to be in the Run-Length Encoded (RLE) format of the msbwt python package. We recommend building the BWT using ropebwt2 (https://github.com/lh3/ropebwt2) by following the instructions on Converting to the fmlrc RLE-BWT format (https://github.com/holtjma/fmlrc/wiki/Converting-to-the-fmlrc-RLE-BWT-format). Alternatively, the msbwt package can directly build these BWTs (Constructing the BWT wiki), but it may be slower and less memory efficient.
+Prior to running FMLRC, a BWT of the short-read sequencing data needs to be constructed. Currently, the implementation expects it to be in the Run-Length Encoded (RLE) format of the msbwt python package. We recommend building the BWT using ropebwt2 (https://github.com/lh3/ropebwt2) by following the instructions on Converting to the fmlrc RLE-BWT format (https://github.com/holtjma/fmlrc/wiki/Converting-to-the-fmlrc-RLE-BWT-format). Alternatively, the msbwt package can directly build these BWTs (Constructing the BWT wiki: https://github.com/holtjma/msbwt/wiki/Constructing-the-MSBWT), but it may be slower and less memory efficient.
 
 ## (3) Correcting long reads by running FMLRC <br>
 Once a short-read BWT is constructed, the execution of FMLRC is relatively simple:
