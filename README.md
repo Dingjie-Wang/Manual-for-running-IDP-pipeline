@@ -5,9 +5,9 @@ IDP is a gene Isoform Detection and Prediction tool from Second Generation Seque
 This manual contains more than just IDP, it has whole IDP pipeline which includes four steps: (1) Correct errors in long reads using short reads; (2) Align the corrected long reads; (3) Align the short reads; (4) Running IDP software. 
 
 In the following, I will show you how to run IDP software through an example data. You should just clone this Git repository and use the example data from it. You can clone this repository and we'll work in the example directory. <br>
-$ git clone https://github.com/jason-weirather/IDP.git <br>
-$ cd IDP/example <br>
-$ gunzip data/*.gz <br>
+$ git clone https://github.com/Dingjie-Wang/Manual-for-running-IDP-pipeline.git <br>
+$ cd Manual-for-running-IDP-pipeline/example/ <br>
+$ tar -zxvf data/*.tar.gz <br>
 $ ls -lht data <br>
 
 # 1. Correct errors in long reads using short reads
