@@ -18,7 +18,7 @@ The first step is to perform error correction on long reads using long and short
 (4) ColoRMap is available at:  https://github.com/sfu-compbio/colormap <br>
 
 As an example, in the following, I will show how to run FMLRC software for error correction in long reads, which includes the following steps:
-## (1) Installation <br>
+## (1) Installation for FMLRC <br>
 In order to install FMLRC, you should first fetch the source code from FMLRC git repository. <br>
 $ git clone --recursive https://github.com/holtjma/fmlrc.git <br>
 You can running the following command to install: <br>
