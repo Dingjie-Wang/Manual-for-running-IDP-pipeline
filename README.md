@@ -4,11 +4,11 @@ IDP is a gene Isoform Detection and Prediction tool from Second Generation Seque
 
 This manual contains more than just IDP, it has whole IDP pipeline which includes four steps: (1) Correct errors in long reads using short reads; (2) Align the corrected long reads; (3) Align the short reads; (4) Running IDP software. 
 
-In the following, I will show you how to run IDP software through an example data. You should just clone this Git repository and use the example data from it. You can clone this repository and we'll work in the example directory.\\
-$ git clone https://github.com/jason-weirather/IDP.git \\
-$ cd IDP/example \\
-$ gunzip data/*.gz \\
-$ ls -lht data \\
+In the following, I will show you how to run IDP software through an example data. You should just clone this Git repository and use the example data from it. You can clone this repository and we'll work in the example directory.
+$ git clone https://github.com/jason-weirather/IDP.git <br>
+$ cd IDP/example <br>
+$ gunzip data/*.gz <br>
+$ ls -lht data <br>
 
 # 1. Correct errors in long reads using short reads
 The first step is to perform error correction on long reads using long and short reads combined. We have included both ColoRMap, LoRDEC and LSC software that can accomplish this step. I recommend ColoRMap and LoRDEC for speed and comparable performance on larger datasets.
