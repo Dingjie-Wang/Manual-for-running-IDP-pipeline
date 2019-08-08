@@ -24,7 +24,7 @@ $ git clone --recursive https://github.com/holtjma/fmlrc.git <br>
 You can running the following command to install: <br>
 $ cd fmlrc <br>
 $ make <br>
-Then simply make the program and run it with the "-h" option to verify it installed.
+Then simply make the program and run it with the "-h" option to verify it installed. <br>
 $ ./fmlrc -h <br>
 
 ## (2) Building the short-read BWT by running ropebwt2 <br>
