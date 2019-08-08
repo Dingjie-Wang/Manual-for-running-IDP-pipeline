@@ -27,12 +27,21 @@ $ make <br>
 Then simply make the program and run it with the "-h" option to verify it installed.
 $ ./fmlrc -h <br>
 
-## (2) Building the short-read BWT
+## (2) Building the short-read BWT by running ropebwt2 <br>
 Prior to running FMLRC, a BWT of the short-read sequencing data needs to be constructed. Currently, the implementation expects it to be in the Run-Length Encoded (RLE) format of the msbwt python package. We recommend building the BWT using ropebwt2 (https://github.com/lh3/ropebwt2) by following the instructions on Converting to the fmlrc RLE-BWT format (https://github.com/holtjma/fmlrc/wiki/Converting-to-the-fmlrc-RLE-BWT-format). Alternatively, the msbwt package can directly build these BWTs (Constructing the BWT wiki: https://github.com/holtjma/msbwt/wiki/Constructing-the-MSBWT), but it may be slower and less memory efficient.
+
+You can running the following command to install ropebwt2: <br>
+$ git clone https://github.com/lh3/ropebwt2.git <br>
+$ cd ropebwt2/  <br>
+$ make
+
+Then you can running the following command to build the short-read BWT: <br>
+$ awk 'NR % 4 == 2' sr.fa | sort | gzip > sr.sorted.txt.gz <br>
+$ gunzip -c sr.sorted.txt.gz | tr NT TN | ropebwt2 -LR | tr NT TN | fmlrc-convert comp_msbwt.npy
 
 ## (3) Correcting long reads by running FMLRC <br>
 Once a short-read BWT is constructed, the execution of FMLRC is relatively simple:
-$ runCorr.sh lr.fa sr.fa output pre 4 <br>
+$ ./fmlrc  comp_msbwt.npy lr.fa corrected_lr.fa
 
 
 # 2. Align the corrected long reads
