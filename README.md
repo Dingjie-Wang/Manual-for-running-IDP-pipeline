@@ -17,21 +17,23 @@ The first step is to perform error correction on long reads using long and short
 (3) LSC is available at: http://augroup.org/LSC/LSC <br>
 (4) ColoRMap is available at:  https://github.com/sfu-compbio/colormap <br>
 
-As an example, in the following, I will show how to run ColoRMap software for error correction in long reads, which includes the following steps:
+As an example, in the following, I will show how to run FMLRC software for error correction in long reads, which includes the following steps:
 ## (1) Installation <br>
-In order to install ColoRMap, you should first fetch the source code from ColoRMap git repository. <br>
-$ git clone --recursive https://github.com/sfu-compbio/colormap.git <br>
-Then, you can running the following command to install: <br>
-$ cd colormap <br>
-$ make deps <br>
+In order to install FMLRC, you should first fetch the source code from FMLRC git repository. <br>
+$ git clone --recursive https://github.com/holtjma/fmlrc.git <br>
+You can running the following command to install: <br>
+$ cd fmlrc <br>
 $ make <br>
+Then simply make the program and run it with the "-h" option to verify it installed.
+$ ./fmlrc -h <br>
 
-## (2) Correcting long reads <br>
-To correct long reads, you can use runCorr.sh script:<br>
+## (2) Building the short-read BWT
+Prior to running FMLRC, a BWT of the short-read sequencing data needs to be constructed. Currently, the implementation expects it to be in the Run-Length Encoded (RLE) format of the msbwt python package. We recommend building the BWT using ropebwt2 (https://github.com/lh3/ropebwt2) by following the instructions on Converting to the fmlrc RLE-BWT format (https://github.com/holtjma/fmlrc/wiki/Converting-to-the-fmlrc-RLE-BWT-format). Alternatively, the msbwt package can directly build these BWTs (Constructing the BWT wiki), but it may be slower and less memory efficient.
+
+## (3) Correcting long reads by running FMLRC <br>
+Once a short-read BWT is constructed, the execution of FMLRC is relatively simple:
 $ runCorr.sh lr.fa sr.fa output pre 4 <br>
 
-This runs shortest path correction algorithm for long reads stored in lr.fa by short reads stored in sr.fa using 4 threads. When this is done, the corrected long reads are stored in testCorr/pre_sp.fasta file. You need to rename pre_sp.fasta as corrected_lr.fasta.
-Note: If you have paired-end short reads, you need to get a single interleaved/interlaced read file using fastUtils program. Then you can improve the correction using One-End Anchors algorithm. Please see the webpage: https://github.com/sfu-compbio/colormap for the details.
 
 # 2. Align the corrected long reads
 You could let IDP do this for you, but I caution against it. Its’ a slow process and the aligners can crash sometimes, so its’ better to just sort this out now and not deal with it in the IDP run. Here, we align the corrected long reads using GMAP software. 
