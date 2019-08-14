@@ -96,7 +96,7 @@ $ hisat2 -x hisat2/hisat2index -U sr.fa -f -S sr.sam <br>
 ## (4) Get the SAM and BED file for SpliceMap format <br>
 Looks good! Unfortunately, IDP needs a different format than the garden variety bam. To accomodate this we will need to conver the bam into a SpliceMap format sam, and also create a junction file like SpliceMap does. We use helper scripts for this part. <br>
 $ # get SpliceMap format sam file (please install python-2.7 and R-3.5) <br>
-$ ./Au-public-master/iron/utilities/make_sam_splicemap_like.py sr.sam sr_trim.sam <br>
+$ ./Au-public-master/iron/utilities/make_sam_splicemap_like.py sr.sam > sr_trim.sam <br>
 $ Rscript ./Au-public-master/iron/utilities/make_sam_splicemap_like.R sr_trim.sam sr.splicemap-like.sam <br>
 $ # get SpliceMap format bed file <br>
 $ ./Au-public-master/iron/utilities/sam_to_splicemap_junction_bed.py -o sr.splicemap-like.junctions.bed sr.sam chr20.fa <br>
