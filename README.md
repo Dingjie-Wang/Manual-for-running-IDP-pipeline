@@ -1,6 +1,6 @@
 # Manual for running IDP pipeline
 
-IDP is a gene Isoform Detection and Prediction tool from Second Generation Sequencing and PacBio Sequencing (also called Hybrid Sequencing) developed by Prof. Kin Fai Au. It offers very reliable gene isoform identification with high sensitivity. This a fork of the original IDP, the purpose is to better help people to run this software. The official distribution is available at: http://augroup.org/IDP/IDP
+IDP is a gene Isoform Detection and Prediction tool from Second Generation Sequencing and PacBio Sequencing (also called Hybrid Sequencing) developed by Prof. Kin Fai Au. It offers very reliable gene isoform identification with high sensitivity. This a fork of the original IDP, the purpose is to better help people to run this software. The official distribution is available at: http://augroup.org/software.html
 
 This manual contains more than just IDP, it has whole IDP pipeline which includes four steps: (1) Correct errors in long reads using short reads; (2) Align the corrected long reads; (3) Align the short reads; (4) Running IDP software. 
 
