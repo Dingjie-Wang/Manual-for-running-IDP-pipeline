@@ -14,7 +14,7 @@ $ ls -lht data <br>
 The first step is to perform error correction on long reads using long and short reads combined. We have included both FMLRC, LoRDEC, ColoRMap and LSC software that can accomplish this step. I recommend FMLRC and LoRDEC for speed and comparable performance on larger datasets. A comparative evaluation for all hybrid error correction method see the paper: https://genomebiology.biomedcentral.com/articles/10.1186/s13059-018-1605-z <br>
 (1) FMLRC is available at: https://github.com/holtjma/fmlrc <br>
 (2) LoRDEC is available at: http://www.atgc-montpellier.fr/lordec/ <br>
-(3) LSC is available at: http://augroup.org/LSC/LSC <br>
+(3) LSC is available at: https://github.com/RuRuYa/LSC <br>
 (4) ColoRMap is available at:  https://github.com/sfu-compbio/colormap <br>
 
 As an example, in the following, I will show how to run FMLRC software for error correction in long reads, which includes the following steps:
